@@ -14,9 +14,8 @@ public class MyServer extends JFrame {
 
     //new MyClient();
     private JTextArea jta = new JTextArea();
-
     public static void main(String[] args) {
-        new MyServer();
+        MyServer x = new MyServer();
     }
 
     public MyServer(){
@@ -28,7 +27,8 @@ public class MyServer extends JFrame {
         setVisible(true);
         try{
 
-            ServerSocket serverSocket = new ServerSocket(8080);
+            ServerSocket serverSocket = new ServerSocket(8088);
+            System.out.print("mmmmmmmmm");
             jta.append("Server start at: "+ new Date()+'\n');
             Socket socket = serverSocket.accept();
             DataInputStream inputStream = new DataInputStream(socket.getInputStream());
@@ -37,6 +37,7 @@ public class MyServer extends JFrame {
                 //String forClient = inputStream.readUTF();//?????????????????????????
                 //outStream.writeChars(forClient);
                 double radius = inputStream.readDouble();
+                System.out.print(radius);
                 double area = radius * radius;
                 outStream.writeDouble(area);
                 jta.append("Radius received from client:"+radius +'\n');
