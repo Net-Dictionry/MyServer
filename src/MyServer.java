@@ -28,20 +28,13 @@ public class MyServer extends JFrame {
         try{
 
             ServerSocket serverSocket = new ServerSocket(8088);
-            System.out.print("mmmmmmmmm");
             jta.append("Server start at: "+ new Date()+'\n');
             Socket socket = serverSocket.accept();
             DataInputStream inputStream = new DataInputStream(socket.getInputStream());
             DataOutputStream outStream = new DataOutputStream(socket.getOutputStream());
             while(true){
-                //String forClient = inputStream.readUTF();//?????????????????????????
-                //outStream.writeChars(forClient);
-                double radius = inputStream.readDouble();
-                System.out.print(radius);
-                double area = radius * radius;
-                outStream.writeDouble(area);
-                jta.append("Radius received from client:"+radius +'\n');
-                jta.append("Area found:"+area+'\n');
+                String forClient = inputStream.readUTF();//?????????????????????????
+                outStream.writeUTF(forClient);
             }
         }
         catch(IOException EX) {
