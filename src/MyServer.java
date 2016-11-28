@@ -33,8 +33,23 @@ public class MyServer extends JFrame {
             DataInputStream inputStream = new DataInputStream(socket.getInputStream());
             DataOutputStream outStream = new DataOutputStream(socket.getOutputStream());
             while(true){
-                String forClient = inputStream.readUTF();//?????????????????????????
-                outStream.writeUTF(forClient);
+
+                String forClient = inputStream.readUTF();
+                String explain;
+
+                NetSerch_youdao x =new NetSerch_youdao();
+                x.get_word(forClient);
+                x.NetSerch();
+                forClient = x.get_explain();
+
+                Carve_youdao y =new Carve_youdao();
+                y.get_explain(forClient);
+                y.Carve_youdao();
+                explain = y.get_carve();
+
+                System.out.print(explain);
+                outStream.writeUTF(explain);
+
             }
         }
         catch(IOException EX) {
