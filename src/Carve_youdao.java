@@ -21,7 +21,7 @@ public class Carve_youdao {
 		int index2=explain.indexOf(']');
 		carve_explain+=explain.substring(index1+2, index2-1);
 		if (!isChinese(carve_explain)){
-			carve_explain = "This word is not exist!";
+			carve_explain = "This word can not be found in youdao!";
 			return;
 		}
 		carve_explain+="\n";
