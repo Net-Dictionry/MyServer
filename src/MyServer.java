@@ -35,37 +35,51 @@ public class MyServer extends JFrame {
             while(true){
 
                 String forClient = inputStream.readUTF();
-                String explain;
+                String explain="";
+                
+                String ClientSeg[]=SegmentClient(forClient);
+                System.out.println(ClientSeg[0]);
+                System.out.println(ClientSeg[1]);
+                if (ClientSeg[0].equals("10")){
+                	String forClient_youdao =ClientSeg[1];
+                	String forClient_jinshan = ClientSeg[1];
+                	String forClient_bing = ClientSeg[1];
 
-                String forClient_jinshan = forClient;
-                String forClient_other = forClient;
+	                NetSerch_youdao Youdaox =new NetSerch_youdao();
+	                Youdaox.get_word(forClient_youdao);
+	                Youdaox.NetSerch();
+	                forClient_youdao = Youdaox.get_explain();
+	                Carve_youdao Youdaoy =new Carve_youdao();
+	                Youdaoy.get_explain(forClient_youdao);
+	                Youdaoy.Carve_youdao();
+	                explain += Youdaoy.get_carve();
+	                //-----------------------------
+	                NetSearch_jinshan Jinshanx =new NetSearch_jinshan();
+	                Jinshanx.get_word(forClient_jinshan);
+	                Jinshanx.NetSerch();
+                	forClient_jinshan = Jinshanx.get_explain();
+                	Carve_jinshan Jinshany =new Carve_jinshan();
+                	Jinshany.get_explain(forClient_jinshan);
+                	Jinshany.Carve_jinshan();
+                	explain+="@"+Jinshany.get_carve();
+                	//System.out.print(forClient_jinshan);
 
-                NetSerch_youdao x =new NetSerch_youdao();
-                x.get_word(forClient);
-                x.NetSerch();
-                forClient = x.get_explain();
-
-                Carve_youdao y =new Carve_youdao();
-                y.get_explain(forClient);
-                y.Carve_youdao();
-                explain = y.get_carve();
-                //-----------------------------
-                /*NetSearch_jinshan z =new NetSearch_jinshan();
-                z.get_word(forClient_jinshan);
-                z.NetSerch();
-                forClient_jinshan = z.get_explain();
-                System.out.print(forClient_jinshan);*/
-
-                //--------------------------------
-                NetSearch_other k = new NetSearch_other();
-                k.get_word(forClient_other);
-                k.NetSerch();
-                forClient_other = k.get_explain();
-                System.out.print(forClient_other);
-                //------------------------------
-                //System.out.print(explain);
+	                //--------------------------------
+	                NetSearch_other Bingx = new NetSearch_other();
+	                Bingx.get_word(forClient_bing);
+	                Bingx.NetSerch();
+	                forClient_bing = Bingx.get_explain();
+	                Carve_bing Bingy =new Carve_bing();
+	                Bingy.get_explain(forClient_bing);
+	                Bingy.Carve_bing();
+                	explain+="@"+Bingy.get_carve();
+	                //System.out.print(forClient_other);
+	                //------------------------------
+	                System.out.print(explain);
+	                outStream.writeUTF(explain);
+                }
+                explain+="a@b@c";
                 outStream.writeUTF(explain);
-
             }
         }
         catch(IOException EX) {
@@ -73,5 +87,10 @@ public class MyServer extends JFrame {
         }
     }
 
-
+    public static String[] SegmentClient(String str){
+    	String[] res = new String[2];
+    	res[0]=str.substring(0, 2);
+    	res[1]=str.substring(2, str.length());
+    	return res;
+    }
 }
