@@ -38,8 +38,8 @@ public class MyServer extends JFrame {
                 String explain="";
                 
                 String ClientSeg[]=SegmentClient(forClient);
-                System.out.println(ClientSeg[0]);
-                System.out.println(ClientSeg[1]);
+                System.out.print(ClientSeg[0]);
+                System.out.print(ClientSeg[1]);
                 if (ClientSeg[0].equals("10")){
                 	String forClient_youdao =ClientSeg[1];
                 	String forClient_jinshan = ClientSeg[1];
@@ -53,6 +53,7 @@ public class MyServer extends JFrame {
 	                Youdaoy.get_explain(forClient_youdao);
 	                Youdaoy.Carve_youdao();
 	                explain += Youdaoy.get_carve();
+	                //System.out.println(explain);
 	                //-----------------------------
 	                NetSearch_jinshan Jinshanx =new NetSearch_jinshan();
 	                Jinshanx.get_word(forClient_jinshan);
@@ -62,6 +63,7 @@ public class MyServer extends JFrame {
                 	Jinshany.get_explain(forClient_jinshan);
                 	Jinshany.Carve_jinshan();
                 	explain+="@"+Jinshany.get_carve();
+                	//System.out.println(explain);
                 	//System.out.print(forClient_jinshan);
 
 	                //--------------------------------
@@ -73,12 +75,13 @@ public class MyServer extends JFrame {
 	                Bingy.get_explain(forClient_bing);
 	                Bingy.Carve_bing();
                 	explain+="@"+Bingy.get_carve();
+                	//System.out.println(explain);
 	                //System.out.print(forClient_other);
 	                //------------------------------
-	                System.out.print(explain);
-	                outStream.writeUTF(explain);
+	                //System.out.print("222");
+	                //outStream.writeUTF(explain);
                 }
-                explain+="a@b@c";
+                //explain+="a@b@c";
                 outStream.writeUTF(explain);
             }
         }

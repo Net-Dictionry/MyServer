@@ -26,8 +26,8 @@ public class Carve_youdao {
 		}
 		carve_explain+="\n";
 		int index3=explain.indexOf('[',index1+1);
-		int index4=explain.indexOf(']',index2+1);
-		String temp=explain.substring(index3+1, index4);
+		int index4=explain.indexOf('}',index2+1);
+		String temp=explain.substring(index3+1, index4-1);
 		int index5=-1;
 		int index6=-1;
 		while(index6<temp.length()-1){

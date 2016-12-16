@@ -20,7 +20,7 @@ public class Carve_jinshan {
 			carve_explain+="This word can not be found in jinshan!";
 			return;
 		}
-		while (index1!=-1){
+		while (index1!=-1&&index2!=-1){
 			carve_explain+=explain.substring(index1+4, index2-2)+'\t';
 			index1=explain.indexOf("acceptation",index2+1);
 			index2=explain.indexOf("acceptation",index1+1);
