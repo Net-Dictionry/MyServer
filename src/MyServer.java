@@ -38,6 +38,7 @@ public class MyServer extends JFrame {
                 String explain;
 
                 String forClient_jinshan = forClient;
+                String forClient_other = forClient;
 
                 NetSerch_youdao x =new NetSerch_youdao();
                 x.get_word(forClient);
@@ -49,12 +50,18 @@ public class MyServer extends JFrame {
                 y.Carve_youdao();
                 explain = y.get_carve();
                 //-----------------------------
-                NetSearch_jinshan z =new NetSearch_jinshan();
+                /*NetSearch_jinshan z =new NetSearch_jinshan();
                 z.get_word(forClient_jinshan);
                 z.NetSerch();
                 forClient_jinshan = z.get_explain();
-                System.out.print(forClient_jinshan);
+                System.out.print(forClient_jinshan);*/
 
+                //--------------------------------
+                NetSearch_other k = new NetSearch_other();
+                k.get_word(forClient_other);
+                k.NetSerch();
+                forClient_other = k.get_explain();
+                System.out.print(forClient_other);
                 //------------------------------
                 //System.out.print(explain);
                 outStream.writeUTF(explain);
