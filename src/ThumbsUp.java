@@ -7,7 +7,7 @@ public class ThumbsUp {
 	private String word;
 	private int up;
 
-    public void get_explain(String a,int b){
+    public void get_word(String a,int b){
       word = a;
       up=b;
     }

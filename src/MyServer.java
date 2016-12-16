@@ -40,7 +40,7 @@ public class MyServer extends JFrame {
                 String ClientSeg[]=SegmentClient(forClient);
                 System.out.print(ClientSeg[0]);
                 System.out.print(ClientSeg[1]);
-                if (ClientSeg[0].equals("10")){
+                if (ClientSeg[0].equals("10")){                 //search
                 	String forClient_youdao =ClientSeg[1];
                 	String forClient_jinshan = ClientSeg[1];
                 	String forClient_bing = ClientSeg[1];
@@ -81,7 +81,33 @@ public class MyServer extends JFrame {
 	                //System.out.print("222");
 	                //outStream.writeUTF(explain);
                 }
-                //explain+="a@b@c";
+                else if (ClientSeg[0].equals("11")){         //up youdao
+                	ThumbsUp thumbsup=new ThumbsUp();
+                	thumbsup.get_word(ClientSeg[1], 1);
+                	boolean judge=thumbsup.ThumbsUp();
+                	if (judge)
+                		explain="true";
+                	else
+                		explain="false";
+                }
+                else if (ClientSeg[0].equals("12")){         //up jinshan
+                	ThumbsUp thumbsup=new ThumbsUp();
+                	thumbsup.get_word(ClientSeg[1], 2);
+                	boolean judge=thumbsup.ThumbsUp();
+                	if (judge)
+                		explain="true";
+                	else
+                		explain="false";
+                }
+                else if (ClientSeg[0].equals("13")){          //up bing
+                	ThumbsUp thumbsup=new ThumbsUp();
+                	thumbsup.get_word(ClientSeg[1], 3);
+                	boolean judge=thumbsup.ThumbsUp();
+                	if (judge)
+                		explain="true";
+                	else
+                		explain="false";
+                }
                 outStream.writeUTF(explain);
             }
         }
