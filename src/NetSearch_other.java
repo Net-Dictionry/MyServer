@@ -23,7 +23,7 @@ public class NetSearch_other extends Thread{
             try {
 
 
-                URL url = new URL("http://xtk.azurewebsites.net/BingDictService.aspx?Word=");
+                URL url = new URL("http://xtk.azurewebsites.net/BingDictService.aspx?Word="+word);
                 HttpURLConnection connection = (HttpURLConnection)url.openConnection();
                 connection.addRequestProperty("encoding", "UTF-8");
                 connection.setDoInput(true);
@@ -36,8 +36,8 @@ public class NetSearch_other extends Thread{
                 BufferedWriter bw = new BufferedWriter(osw);
 
 
-                bw.write(word);
-                bw.flush();
+                //bw.write(word);
+                //bw.flush();
 
                 InputStream is = connection.getInputStream();
                 InputStreamReader isr = new InputStreamReader(is,"UTF-8");
