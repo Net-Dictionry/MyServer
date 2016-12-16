@@ -18,9 +18,10 @@ public class Carve_jinshan {
 		int index2=explain.indexOf("pos",index1+1);
 		if (index1==-1){
 			carve_explain+="This word can not be found in jinshan!";
+			return;
 		}
 		while (index1!=-1){
-			carve_explain+=explain.substring(index1+4, index2-2);
+			carve_explain+=explain.substring(index1+4, index2-2)+'\t';
 			index1=explain.indexOf("acceptation",index2+1);
 			index2=explain.indexOf("acceptation",index1+1);
 			carve_explain+=explain.substring(index1+12, index2-2)+'\n';
