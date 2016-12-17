@@ -108,6 +108,24 @@ public class MyServer extends JFrame {
                 	else
                 		explain="false";
                 }
+                else if (ClientSeg[0].equals("20")){          //User Register
+                	UserRegister Register=new UserRegister();
+                	Register.get_account(ClientSeg[1]);
+                	boolean judge=Register.UserRegister();
+                	if (judge)
+                		explain="true";
+                	else
+                		explain="false";
+                }
+                else if (ClientSeg[0].equals("21")){          //User Login
+                	UserLogin Login=new UserLogin();
+                	Login.get_account(ClientSeg[1]);
+                	boolean judge=Login.UserLogin();
+                	if (judge)
+                		explain="true";
+                	else
+                		explain="false";
+                }
                 outStream.writeUTF(explain);
             }
         }

@@ -2,5 +2,6 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="D:/Downloads/数据库概论/jdbc/Microsoft JDBC Driver 6.0 for SQL Server/sqljdbc_6.0/chs/sqljdbc4.jar"/>
 	<classpathentry kind="output" path="out/production/MyServer"/>
 </classpath>
