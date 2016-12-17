@@ -286,6 +286,12 @@ class serverThread extends Thread{        //build a new thread
             	}
             	outStream.writeUTF(explain);
     		} catch(IOException EX) {
+    			try {
+					clientRequest.close();
+					break;
+				} catch (IOException e) {
+					System.err.println(e);
+				}
         		System.err.println(EX);
         	}
     	}
