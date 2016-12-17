@@ -23,7 +23,7 @@ public class GetJinshanUP {
 		try {
 			Class.forName(driverName);
 			Connection dbConn=DriverManager.getConnection(dbURL,userName,userPwd);
-		    System.out.println("连接数据库成功");
+		    //System.out.println("连接数据库成功");
 		    Statement stmt = dbConn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,   
 		    		ResultSet.CONCUR_READ_ONLY);
 		    ResultSet rs = stmt.executeQuery("select jinshanup from words where word='"+word+"';");
