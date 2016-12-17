@@ -25,7 +25,10 @@ public class UserRegister {
 			 System.out.println("连接数据库成功");
 			 Statement stmt = dbConn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,   
 			    	ResultSet.CONCUR_READ_ONLY);
-			 ResultSet rs = stmt.executeQuery("select * from users;");
+			 ResultSet rs = stmt.executeQuery("select * from users where uname='"+name+"';");
+			 if (rs.next())
+				 return false;
+			 rs = stmt.executeQuery("select * from users;");
 			 while (rs.next()){
 				 ;
 			 }
