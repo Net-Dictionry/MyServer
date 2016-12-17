@@ -38,8 +38,8 @@ public class MyServer extends JFrame {
                 String explain="";
                 
                 String ClientSeg[]=SegmentClient(forClient);
-                System.out.print(ClientSeg[0]);
-                System.out.print(ClientSeg[1]);
+                //System.out.print(ClientSeg[0]);
+                //System.out.print(ClientSeg[1]);
                 if (ClientSeg[0].equals("10")){                 //search
                 	String forClient_youdao =ClientSeg[1];
                 	String forClient_jinshan = ClientSeg[1];
@@ -52,7 +52,10 @@ public class MyServer extends JFrame {
 	                Carve_youdao Youdaoy =new Carve_youdao();
 	                Youdaoy.get_explain(forClient_youdao);
 	                Youdaoy.Carve_youdao();
-	                explain += Youdaoy.get_carve();
+	                GetYoudaoUP Youdaoz=new GetYoudaoUP();
+	                Youdaoz.get_word(ClientSeg[1]);
+	                Youdaoz.GetYoudaoUP();
+	                explain += Youdaoy.get_carve()+"@"+Youdaoz.get_up();
 	                //System.out.println(explain);
 	                //-----------------------------
 	                NetSearch_jinshan Jinshanx =new NetSearch_jinshan();
@@ -62,7 +65,10 @@ public class MyServer extends JFrame {
                 	Carve_jinshan Jinshany =new Carve_jinshan();
                 	Jinshany.get_explain(forClient_jinshan);
                 	Jinshany.Carve_jinshan();
-                	explain+="@"+Jinshany.get_carve();
+                	GetJinshanUP Jinshanz=new GetJinshanUP();
+                	Jinshanz.get_word(ClientSeg[1]);
+                	Jinshanz.GetJinshanUP();
+                	explain+="@"+Jinshany.get_carve()+"@"+Jinshanz.get_up();
                 	//System.out.println(explain);
                 	//System.out.print(forClient_jinshan);
 
@@ -74,7 +80,10 @@ public class MyServer extends JFrame {
 	                Carve_bing Bingy =new Carve_bing();
 	                Bingy.get_explain(forClient_bing);
 	                Bingy.Carve_bing();
-                	explain+="@"+Bingy.get_carve();
+	                GetBingUP Bingz=new GetBingUP();
+	                Bingz.get_word(ClientSeg[1]);
+	                Bingz.GetBingUP();
+                	explain+="@"+Bingy.get_carve()+"@"+Bingz.get_up();
                 	//System.out.println(explain);
 	                //System.out.print(forClient_other);
 	                //------------------------------
