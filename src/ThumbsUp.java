@@ -26,7 +26,7 @@ public class ThumbsUp {
 		    Statement stmt = dbConn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,   
 		    		ResultSet.CONCUR_READ_ONLY);
 		    ResultSet rs = stmt.executeQuery("select * from words where word='"+word+"';");
-		    if (!rs.next()){
+		    if (!rs.next()){                 //没有这个单词，新建
 		    	if (up==1)
 		    		stmt.executeUpdate("INSERT INTO words VALUES ('"+word+"',1,0,0);");
 		    	else if (up==2)
@@ -35,7 +35,7 @@ public class ThumbsUp {
 		    		stmt.executeUpdate("INSERT INTO words VALUES ('"+word+"',0,0,1);");
 		    }
 		    else{
-		    	if (up==1)
+		    	if (up==1)                   //有这个单词，更新
 		    		stmt.executeUpdate("update words set youdaoup=youdaoup+1 where word='"+word+"';");
 		    	else if (up==2)
 		    		stmt.executeUpdate("update words set jinshanup=jinshanup+1 where word='"+word+"';");

@@ -201,40 +201,40 @@ class serverThread extends Thread{        //build a new thread
             		String forClient_jinshan = ClientSeg[1];
             		String forClient_bing = ClientSeg[1];
 
-                	NetSerch_youdao Youdaox =new NetSerch_youdao();
+                	NetSerch_youdao Youdaox =new NetSerch_youdao();    //有道查词
                 	Youdaox.get_word(forClient_youdao);
                 	Youdaox.NetSerch();
                 	forClient_youdao = Youdaox.get_explain();
                 	Carve_youdao Youdaoy =new Carve_youdao();
                 	Youdaoy.get_explain(forClient_youdao);
                 	Youdaoy.Carve_youdao();
-                	GetYoudaoUP Youdaoz=new GetYoudaoUP();
+                	GetYoudaoUP Youdaoz=new GetYoudaoUP();           //有道点赞
                 	Youdaoz.get_word(ClientSeg[1]);
                 	Youdaoz.GetYoudaoUP();
                 	explain += Youdaoy.get_carve()+"@"+Youdaoz.get_up();
 
                 	//-----------------------------
-                	NetSearch_jinshan Jinshanx =new NetSearch_jinshan();
+                	NetSearch_jinshan Jinshanx =new NetSearch_jinshan();    //金山查词
                 	Jinshanx.get_word(forClient_jinshan);
                 	Jinshanx.NetSerch();
             		forClient_jinshan = Jinshanx.get_explain();
             		Carve_jinshan Jinshany =new Carve_jinshan();
             		Jinshany.get_explain(forClient_jinshan);
             		Jinshany.Carve_jinshan();
-            		GetJinshanUP Jinshanz=new GetJinshanUP();
+            		GetJinshanUP Jinshanz=new GetJinshanUP();           //金山点赞
             		Jinshanz.get_word(ClientSeg[1]);
             		Jinshanz.GetJinshanUP();
             		explain+="@"+Jinshany.get_carve()+"@"+Jinshanz.get_up();
             	
                 	//--------------------------------
-                	NetSearch_other Bingx = new NetSearch_other();
+                	NetSearch_other Bingx = new NetSearch_other();   //必应查词
                 	Bingx.get_word(forClient_bing);
                 	Bingx.NetSerch();
                 	forClient_bing = Bingx.get_explain();
                 	Carve_bing Bingy =new Carve_bing();
                 	Bingy.get_explain(forClient_bing);
                 	Bingy.Carve_bing();
-                	GetBingUP Bingz=new GetBingUP();
+                	GetBingUP Bingz=new GetBingUP();                  //必应点暂
                 	Bingz.get_word(ClientSeg[1]);
                 	Bingz.GetBingUP();
             		explain+="@"+Bingy.get_carve()+"@"+Bingz.get_up();
@@ -310,7 +310,7 @@ class serverThread extends Thread{        //build a new thread
     	}
     }
 	
-	public static String[] SegmentClient(String str){
+	public static String[] SegmentClient(String str){       //拆分操作码和内容
     	String[] res = new String[2];
     	res[0]=str.substring(0, 2);
     	res[1]=str.substring(2, str.length());

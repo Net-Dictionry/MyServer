@@ -28,7 +28,7 @@ public class UserLogin {
 			 ResultSet rs = stmt.executeQuery("select * from users;");
 			 while (rs.next()){
 				 if (rs.getString("uname").trim().equals(name)){
-					 if (rs.getInt("sta")==1)
+					 if (rs.getInt("sta")==1)                   //ÒÑ¾­µÇÂ¼ÔòµÇÂ¼Ê§°Ü
 						 return false;
 					 if (rs.getString("upassword").trim().equals(password)){
 						 stmt.executeUpdate("update users set sta=1 where uname='"+name+"'");
