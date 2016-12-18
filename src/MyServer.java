@@ -284,6 +284,19 @@ class serverThread extends Thread{        //build a new thread
             		else
             			explain="false";
             	}
+            	else if (ClientSeg[0].equals("22")){          //User Logout
+            		UserLogout Logout=new UserLogout();
+            		Logout.get_name(ClientSeg[1]);
+            		boolean judge=Logout.UserLogout();
+            		if (judge)
+            			explain="true";
+            		else
+            			explain="false";
+            	}
+            	else if (ClientSeg[0].equals("23")){          //User Online
+            		GetOnlineUser onlineuser=new GetOnlineUser();
+            		explain+=onlineuser.GetOnlineUser();
+            	}
             	outStream.writeUTF(explain);
     		} catch(IOException EX) {
     			try {

@@ -35,7 +35,7 @@ public class UserRegister {
 			 rs.previous();
 			 int uno=rs.getInt("uno");
 			 uno++;
-			 int judge=stmt.executeUpdate("INSERT INTO users VALUES ("+uno+",'"+name+"','"+password+"');");
+			 int judge=stmt.executeUpdate("INSERT INTO users VALUES ("+uno+",'"+name+"','"+password+"',0);");
 			 if (judge!=1)
 				 return false;
 			 

@@ -13,6 +13,8 @@ public class ThumbsUp {
     }
     
 	public boolean ThumbsUp(){
+		if (word.equals(""))
+			return false;
 		String driverName="com.microsoft.sqlserver.jdbc.SQLServerDriver";
 		String dbURL="jdbc:sqlserver://localhost:1433;DatabaseName=TransData";
 		String userName="sa";		
